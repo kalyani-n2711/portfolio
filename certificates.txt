@@ -1,0 +1,100 @@
+Yes. I extracted the **43 actual certifications/credentials** from your file and would structure them into **Top Tier / Mid Tier / Introductory** for a portfolio. I would not display all 43 with equal visual weight; the hierarchy should make your strongest credentials immediately visible. 
+
+## 1. TOP TIER — Featured Credentials
+
+These are the ones I would put in the **main certification section**, with larger cards and logos.
+
+1. **Bharatiya Antariksh Hackathon 2026 — ISRO**
+2. **Certificate of Paper Presentation at AITA 2026**
+3. **ISCO 2025 – Research Paper Presentation Certificate**
+4. **Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate — Oracle**
+5. **Neo4j Graph Data Science Certification — Neo4j**
+6. **SQL (Advanced) — HackerRank**
+7. **AI Upskilling Certificate: Hands-On Development from Model to App — Qualcomm**
+8. **Software Engineering Job Simulation — JPMorganChase**
+9. **GenAI Powered Data Analytics Job Simulation — Tata Group**
+10. **Deloitte Data Analytics Job Simulation — Deloitte**
+11. **AI Agents Fundamentals — Hugging Face**
+12. **Agents and Workflows — OpenAI**
+13. **AI Skills Passport — EY**
+14. **NASA Open Science Essentials — NASA**
+15. **Describe the Core Architectural Components of Azure — Microsoft**
+
+These have the strongest combination of **recognized organizations + technical relevance + demonstrable application/research value**. For example, your ISRO credential specifically records successful idea submission, while your AITA credential records a research-paper presentation.  
+
+---
+
+# 2. MID TIER — Technical & Professional Credentials
+
+These should appear below the featured section, preferably as **smaller cards**.
+
+16. **Agentic AI Python LangChain — FreeAcademy.ai**
+17. **Integrations: APIs & Connected Workflows — n8n Academy**
+18. **Big Data and Spark Foundation Course — Intellipaat**
+19. **Power BI using DAX and AI — VOIS**
+20. **Introduction to Serverless on Kubernetes (LFS157) — Linux Foundation**
+21. **Azure Fundamentals: Cloud Computing — Infosys**
+22. **From Relational Model (SQL) to MongoDB's Document Model — MongoDB**
+23. **Getting Started with Cisco Packet Tracer — Cisco Networking Academy**
+24. **AI for Business Professionals — HP LIFE**
+25. **Green Skills & Applied AI for Climate Action — 1M1B**
+26. **Digital Forensics — The Open University**
+27. **Claude 101 — Anthropic**
+28. **Gemini Certified Student – University — Google for Education**
+29. **Atlassian Cloud Fundamentals — Atlassian**
+30. **Vibe Coding with Cursor — Analytics Vidhya**
+
+These are useful because they show breadth across **GenAI, agents, cloud, databases, big data, automation, cybersecurity and developer tooling**. Your n8n credential, for example, includes API integrations, authentication, pagination, routing and error handling rather than merely naming the tool. 
+
+---
+
+# 3. INTRODUCTORY — Foundations & Supporting Credentials
+
+These should **not dominate your portfolio**. Keep them in a compact "Additional Certifications" section.
+
+31. **Claude AI Pro – The Ultimate Course — Udemy**
+32. **Foundations to Advanced Systems: LLMs for Product Managers — Product Space**
+33. **MATLAB Onramp — MathWorks**
+34. **Getting Started with Artificial Intelligence — IBM**
+35. **Infosys AI Primer Certification — Infosys Springboard**
+36. **YUVA AI for ALL — IndiaAI**
+37. **Getting Started with Scala — CodeSignal**
+38. **AI for Business Professionals — HP LIFE**
+39. **Digital Marketing Certified — HubSpot Academy**
+40. **NASSCOM FutureSkills STEM Certificate**
+41. **Post-Quantum Security: Signatures, Encryption and Beyond — Amrita**
+42. **HackVega 2.0 – Certificate of Participation**
+43. **Getting Started with Artificial Intelligence / Introduction to Artificial Intelligence (2023) — LinkedIn**
+
+### One correction
+
+Your source has **43 credentials**, but I noticed that **AI for Business Professionals** appears once in the source, so it should only be counted once. The source itself contains 43 credential entries after excluding the "Licenses & certifications" heading. 
+
+Also, I would move **MATLAB Onramp** into a "Technical Foundations" subsection rather than treating it as a weak credential—MathWorks is a strong name, but the credential itself is explicitly introductory. 
+
+## Best portfolio layout
+
+I recommend **not** making 43 huge certificate cards.
+
+Use:
+
+```text
+CERTIFICATIONS
+
+01 — FEATURED
+[ ISRO ] [ OpenAI ] [ NASA ] [ Oracle ] [ Qualcomm ]
+[ Neo4j ] [ Microsoft ] [ Hugging Face ] [ JPMorgan ]
+[ Deloitte ] [ EY ] [ Research ]
+
+02 — TECHNICAL & PROFESSIONAL
+30 smaller cards
+
+03 — FOUNDATIONS
+compact list / expandable section
+```
+
+And for your **hero/featured row**, I would specifically prioritize:
+
+**ISRO → OpenAI → Hugging Face → NASA → Oracle → Qualcomm → Neo4j → Microsoft → JPMorganChase → Deloitte → Research Presentations**
+
+That ordering makes your portfolio look much more like an **AI/DS engineering portfolio** rather than a website displaying "I collected 43 certificates."

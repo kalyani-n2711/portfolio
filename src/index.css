@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  body {
+    @apply bg-paper-50 text-paper-900 antialiased selection:bg-tealAccent-500 selection:text-white dark:bg-paper-950 dark:text-paper-100 transition-colors duration-300;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.6);
+}
+.dark ::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0D9488;
+}
+
+/* Background Patterns & Paper Texture */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.dark .bg-grid-pattern {
+  background-image: radial-gradient(rgba(51, 65, 85, 0.35) 1px, transparent 1px);
+}
+
+.bg-paper-texture {
+  background-color: #FDFBF7;
+  background-image: radial-gradient(#E2E8F0 0.75px, transparent 0.75px), radial-gradient(#E2E8F0 0.75px, #FDFBF7 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+.dark .bg-paper-texture {
+  background-color: #050814;
+  background-image: radial-gradient(#1E293B 0.75px, transparent 0.75px), radial-gradient(#1E293B 0.75px, #050814 0.75px);
+}
+
+/* Editorial Glass Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .glass-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card:hover {
+  border-color: rgba(13, 148, 136, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(13, 148, 136, 0.12);
+}
+
+/* Computer Vision HUD Animations & Grid Overlay */
+.cv-hud-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.8), transparent);
+  height: 2px;
+  width: 100%;
+  animation: scanline 3.5s ease-in-out infinite;
+}
+
+.cv-grid-overlay {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(13, 148, 136, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13, 148, 136, 0.12) 1px, transparent 1px);
+}
+
+/* 3D Tilt Card Base */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-gpu {
+  transform-style: preserve-3d;
+}

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Organize My Learning as an AI Student — Kalyani Agarwal</title>
+  <meta name="description" content="A detailed guide on how Kalyani Agarwal structures learning in AI and Data Science. Includes time blocking, priority stacking, and active recall.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink-50: #fff5f7;
+      --pink-100: #ffe0e8;
+      --pink-200: #ffb8ca;
+      --pink-300: #ff8fab;
+      --pink-400: #f06080;
+      --pink-500: #d94068;
+      --cream: #fffaf8;
+      --warm-white: #fefcfb;
+      --text-dark: #1a1018;
+      --text-mid: #4a3040;
+      --text-muted: #8a6878;
+      --border: rgba(208,140,160,0.2);
+      --border-strong: rgba(208,140,160,0.4);
+      --accent: #d94068;
+      --accent-light: #ff8fab;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text-dark);
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    /* Custom cursor - Desktop only */
+    .cursor, .cursor-ring {
+      display: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+      .cursor {
+        display: block; position: fixed; width: 8px; height: 8px;
+        background: var(--accent); border-radius: 50%;
+        pointer-events: none; z-index: 9999;
+        transform: translate(-50%,-50%);
+        transition: width .15s, height .15s;
+      }
+      .cursor-ring {
+        display: block; position: fixed; width: 28px; height: 28px;
+        border: 1px solid rgba(217,64,104,0.35);
+        border-radius: 50%; pointer-events: none; z-index: 9998;
+        transform: translate(-50%,-50%);
+        transition: transform .12s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.15s, background-color 0.15s;
+      }
+    }
+
+    /* Background */
+    .bg-canvas {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden;
+      background: linear-gradient(135deg, #fff5f7 0%, #fffaf8 40%, #fff0f4 70%, #fef6f8 100%);
+    }
+    .bg-blob {
+      position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.35;
+    }
+    .bg-blob-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #ffcdd9, transparent 70%);
+      top: -200px; right: -100px;
+    }
+    .bg-blob-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #ffd6e0, transparent 70%);
+      bottom: 10%; left: -100px;
+    }
+    .bg-grid {
+      position: absolute; inset: 0;
+      background-image: 
+        linear-gradient(rgba(217,64,104,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(217,64,104,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Page container */
+    .article-page {
+      position: relative; z-index: 1;
+      max-width: 800px; margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* Back Button */
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border: 1px solid var(--border-strong);
+      border-radius: 20px; color: var(--text-mid); text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+      font-weight: 500; transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+      background: var(--warm-white); margin-bottom: 40px;
+    }
+    .btn-back:hover {
+      border-color: var(--accent); color: var(--accent);
+      transform: translateY(-2px); box-shadow: 0 4px 12px rgba(217,64,104,0.08);
+    }
+
+    /* Typography */
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 400;
+      line-height: 1.15; color: var(--text-dark); margin-bottom: 20px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 400;
+      color: var(--text-dark); margin-bottom: 16px; line-height: 1.3;
+    }
+    p {
+      font-size: 0.95rem; color: var(--text-mid); margin-bottom: 18px;
+      text-align: justify;
+    }
+    strong {
+      color: var(--text-dark); font-weight: 500;
+    }
+
+    /* Cards */
+    .intro-card, .section-card {
+      background: var(--warm-white); padding: 40px;
+      margin-bottom: 32px; border: 1px solid var(--border);
+      border-radius: 4px; box-shadow: 0 4px 20px rgba(217,64,104,0.02);
+      position: relative; overflow: hidden;
+    }
+    .intro-card::after, .section-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--pink-300), var(--accent));
+      transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+    }
+    .intro-card:hover::after, .section-card:hover::after { transform: scaleX(1); }
+
+    .intro-card {
+      border-left: 3px solid var(--accent);
+    }
+    .intro-card p {
+      font-size: 1.05rem; line-height: 1.8; color: var(--text-dark);
+    }
+
+    /* List styling */
+    ul {
+      list-style: none; display: flex; flex-direction: column; gap: 12px;
+      margin: 20px 0; padding-left: 8px;
+    }
+    li {
+      font-size: 0.95rem; color: var(--text-mid);
+      display: flex; align-items: start; gap: 10px;
+    }
+    li::before {
+      content: '⟡'; color: var(--accent); font-size: 0.8rem; line-height: 1.8;
+    }
+
+    /* References Section */
+    .references-card {
+      background: var(--warm-white); padding: 40px;
+      border: 1px solid var(--border); border-radius: 4px;
+      margin-top: 48px;
+    }
+    .references-card h2 {
+      font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.08em;
+      font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--accent);
+      border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 20px;
+    }
+    .ref-links {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .ref-item {
+      font-size: 0.88rem; color: var(--text-muted);
+    }
+    .ref-item a {
+      color: var(--accent); text-decoration: none; font-weight: 500;
+      transition: color 0.3s;
+    }
+    .ref-item a:hover {
+      color: var(--pink-400); text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .article-page { padding: 40px 16px; }
+      .intro-card, .section-card, .references-card { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor Elements -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Background canvas -->
+  <div class="bg-canvas">
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
+    <div class="bg-grid"></div>
+  </div>
+
+  <div class="article-page">
+    <!-- Back Button -->
+    <a href="../portfolio.html" class="btn-back" aria-label="Return to portfolio website homepage">
+      ← Back to Portfolio
+    </a>
+
+    <!-- Main article content -->
+    <main>
+      <article>
+        <header>
+          <h1>How I Organize My Learning as an AI Student</h1>
+        </header>
+
+        <!-- Intro Card -->
+        <div class="intro-card">
+          <p>
+            Balancing college, AI projects, semester exams, quizzes, workshops, and a social life feels like juggling flaming torches while riding a unicycle. As an AI student, I've learned that success isn't about working more hours—it's about working smarter. The problem I face is clear: how do you manage intense academic demands while diving deep into AI, ML, and computer vision without burning out? Over time, I've built a system that keeps me on track, reduces stress, and lets me actually enjoy learning. This is how I organize my learning as an AI student.
+          </p>
+        </div>
+
+        <!-- Section 1: Core Concept -->
+        <div class="section-card">
+          <h2>Core Concept: My Learning Organization System</h2>
+          <p>My system rests on four pillars: time blocking, priority stacking, weekly reviews, and energy management.</p>
+          <p>
+            <strong>Time blocking</strong> means I assign specific hours for specific tasks. Instead of a vague "study AI today," I schedule "9–11 AM: neural networks lecture," "2–4 PM: ML project coding," and "7–8 PM: quiz revision." I use Google Calendar with color codes: blue for college lectures, green for AI projects, red for exams, and yellow for workshops. This visual system makes it impossible to overbook myself.
+          </p>
+          <p>
+            <strong>Priority stacking</strong> is about ranking tasks by urgency and impact. Every Sunday, I list all tasks for the week and tag them as "Must Do," "Should Do," or "Can Skip." Semester exams and quiz dates are always "Must Do." AI projects that align with my career goals are "Should Do." Everything else—like optional club meetings—gets cut unless I have extra energy.
+          </p>
+          <p>
+            <strong>Weekly reviews</strong> happen every Friday night. I check what I completed, what I missed, and why. If I missed coding on my CV project, I ask: Was it too much college work? Did I lose focus? Then I adjust the next week's plan. This reflection prevents the same mistakes from repeating.
+          </p>
+          <p>
+            <strong>Energy management</strong> is the most overlooked part. I track when I'm most focused (for me, it's 8–11 AM) and schedule hard AI tasks then. Lightweight tasks like reading documentation or attending workshops go in the afternoon when my energy dips. I also take 10-minute breaks every 90 minutes and never work past 10 PM. Sleep is non-negotiable—7 hours minimum.
+          </p>
+          <p>
+            For workshops and sessions, I treat them like mini-projects. Before each workshop, I set a goal: "Learn OpenCV pipelines" or "Build a simple chatbot." Afterward, I write a 200-word summary and save key code snippets in a personal GitHub repo. This turns passive attendance into active learning.
+          </p>
+        </div>
+
+        <!-- Section 2: Weekly Routine -->
+        <div class="section-card">
+          <h2>Example/Application: My Weekly Routine in Action</h2>
+          <p>Here's how this looks in a real week during mid-semester:</p>
+          <p>
+            <strong>Monday–Saturday</strong> are college days. I attend lectures from 9 AM to 5 PM, then use 6–8 PM for AI project work on generic machine learning or computer vision projects. After 8:30 PM, I revise quiz material for upcoming tests. Some evenings I spend 30 minutes maintaining my projects to avoid losing progress.
+          </p>
+          <p>
+            <strong>Saturday</strong> evenings are lighter since college ends at 5 PM. I spend 6–9 PM building a generic computer vision model or machine learning classifier for my course. This is when I make meaningful progress on my AI projects.
+          </p>
+          <p>
+            <strong>Sunday</strong> is for planning and rest. I spend 2 hours mapping the next week's time blocks, then relax. No AI, no college—just reading, walking, or hanging out with friends. This break prevents burnout.
+          </p>
+          <p>
+            When semester exams hit, I shift priorities. For two weeks, AI projects go into "maintenance mode" (only 30 minutes/day to avoid losing progress). All extra hours go to exam prep. I use active recall: instead of re-reading notes, I write down everything I remember about a topic, then check what I missed. This doubles my retention.
+          </p>
+          <p>
+            This system works because it's flexible. If a quiz is moved or a project deadline changes, I adjust my time blocks without panic. The key is planning ahead but staying adaptable.
+          </p>
+        </div>
+
+        <!-- Section 3: Takeaways -->
+        <div class="section-card">
+          <h2>Key Takeaways</h2>
+          <p>Here's what you can learn from my approach:</p>
+          <ul>
+            <li><strong>Time blocking</strong> turns vague goals into concrete schedules.</li>
+            <li><strong>Priority stacking</strong> ensures you focus on what matters most.</li>
+            <li><strong>Weekly reviews</strong> prevent repeating mistakes and keep you on track.</li>
+            <li><strong>Energy management</strong> means doing hard tasks when you're most focused.</li>
+            <li>Turn workshops into active learning by setting goals and coding demos afterward.</li>
+            <li>During exams, shift priorities temporarily but don't drop projects completely.</li>
+            <li>Rest is part of the system—skip it, and you'll burn out.</li>
+          </ul>
+          <p>You don't need to be perfect. Start with one pillar (like time blocking), then add the rest. Within a month, you'll feel more controlled, less stressed, and actually excited to learn AI.</p>
+        </div>
+
+        <!-- References Card -->
+        <div class="references-card">
+          <h2>References</h2>
+          <div class="ref-links">
+            <div class="ref-item">
+              • <a href="https://calnewport.com/books/deep-work/" target="_blank" rel="noopener noreferrer">Deep Work by Cal Newport</a> – on focus and time blocking
+            </div>
+            <div class="ref-item">
+              • <a href="https://www.python.org/about/helpfulbooks/" target="_blank" rel="noopener noreferrer">Python Documentation</a> – for project coding
+            </div>
+            <div class="ref-item">
+              • <a href="https://www.tensorflow.org/guide" target="_blank" rel="noopener noreferrer">TensorFlow Guides</a> – for deep learning demos
+            </div>
+            <div class="ref-item">
+              • <a href="https://ai.google/education/" target="_blank" rel="noopener noreferrer">Google AI Education</a> – for ML/CV resources
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // Custom cursor logic - active on desktop pointers only
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    
+    if (!isTouch && cursor && ring) {
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top = my + 'px';
+      });
+      
+      function animateRing() {
+        rx += (mx - rx) * 0.15;
+        ry += (my - ry) * 0.15;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+
+      // Expand ring on hovering interactive components
+      const hoverables = document.querySelectorAll('a, button, .section-card, .intro-card');
+      hoverables.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+          ring.style.transform = 'translate(-50%, -50%) scale(1.5)';
+          ring.style.borderColor = 'var(--accent)';
+          ring.style.backgroundColor = 'rgba(217, 64, 104, 0.05)';
+        });
+        item.addEventListener('mouseleave', () => {
+          ring.style.transform = 'translate(-50%, -50%) scale(1)';
+          ring.style.borderColor = 'rgba(217,64,104,0.35)';
+          ring.style.backgroundColor = 'transparent';
+        });
+      });
+    } else {
+      if (cursor) cursor.style.display = 'none';
+      if (ring) ring.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
